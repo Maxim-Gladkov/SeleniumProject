@@ -2,4 +2,5 @@
 /shelf/
 /workspace.xml
 .idea
-.git
+/out
+*.iml
