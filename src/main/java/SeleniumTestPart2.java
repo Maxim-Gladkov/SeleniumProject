@@ -23,7 +23,7 @@ public class SeleniumTestPart2 {
     }
 
     @Test
-    public void headerTextCheck() {
+    public void headerTextTest() {
         //open page
         driver.get("https://courses.ultimateqa.com/users/sign_in");
         //check text
