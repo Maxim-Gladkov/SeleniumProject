@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
@@ -106,6 +108,7 @@ public class SeleniumTestPart2 {
     @Test
     public void loginTest() {
         String checkedText = "Invalid email or password.";
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
         //open page
         driver.get("https://courses.ultimateqa.com/users/sign_in");
         //click sign in button with empty logan and password fields
@@ -113,10 +116,12 @@ public class SeleniumTestPart2 {
         driver.findElement(By.id("user[password]")).isDisplayed();
         WebElement signInButton = driver.findElement(By.cssSelector(".form__button-group > input"));
         signInButton.click();
-        //wait 2 seconds until error message will be displayed
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        //check if error is displayed, check error text
-        WebElement error = driver.findElement(By.cssSelector("#notice > ul > li"));
+        //wait 2 seconds, check if error is displayed, check error text
+
+        /*driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        WebElement error = driver.findElement(By.cssSelector("#notice > ul > li"));*/
+
+        WebElement error =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#notice > ul > li")));
         assert error.isDisplayed();
         String errorText = error.getAttribute("textContent");
         assert errorText.equals(checkedText);
