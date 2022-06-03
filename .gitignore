@@ -5,3 +5,5 @@
 /out
 *.iml
 /target
+/src/test/allure-results/
+/.allure/

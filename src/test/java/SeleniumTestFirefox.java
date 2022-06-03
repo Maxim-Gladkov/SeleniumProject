@@ -1,6 +1,9 @@
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+//import org.junit.After;
+//import org.junit.Before;
+//import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -9,7 +12,7 @@ public class SeleniumTestFirefox {
     private WebDriver driver;
 
     // initialize driver
-    @Before
+    @BeforeEach
     public void setup() {
         System.setProperty("webdriver.gecko.driver", "C:\\Selenium WebDriver\\geckodriver-v0.30.0-win64\\geckodriver.exe");
         driver = new FirefoxDriver();
@@ -25,7 +28,7 @@ public class SeleniumTestFirefox {
     }
 
     // stop driver and shut down browser
-    @After
+    @AfterEach
     public void stop() {
         driver.quit();
         driver = null;

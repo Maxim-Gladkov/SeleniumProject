@@ -1,7 +1,11 @@
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+//import org.junit.After;
+//import org.junit.Assert;
+//import org.junit.Before;
+//import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +20,7 @@ public class SeleniumTestPart2 {
 
     private WebDriver driver;
 
-    @Before
+    @BeforeEach
     public void setup() {
         System.setProperty("webdriver.chrome.driver", "C:\\Selenium WebDriver\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver();
@@ -79,7 +83,7 @@ public class SeleniumTestPart2 {
         String forgotPassword = "https://courses.ultimateqa.com/users/password/new";
         WebElement forgotPasswordlink = driver.findElement(By.cssSelector("a.form__forgot-password"));
         String forgotPasswordLinkText = forgotPasswordlink.getAttribute("href");
-        Assert.assertEquals("Link is not correct", forgotPassword, forgotPasswordLinkText);
+        Assertions.assertEquals(forgotPassword, forgotPasswordLinkText, "Link is not correct");
     }
 
     @Test
@@ -90,7 +94,7 @@ public class SeleniumTestPart2 {
         String createNewAcc = "https://courses.ultimateqa.com/users/sign_up";
         WebElement createNewAccLink = driver.findElement(By.cssSelector(".sign-in__sign-up > a"));
         String createNewAccLinkText = createNewAccLink.getAttribute("href");
-        Assert.assertEquals("Link is not correct", createNewAcc, createNewAccLinkText);
+        Assertions.assertEquals(createNewAcc, createNewAccLinkText, "Link is not correct");
     }
 
     @Test
@@ -102,7 +106,7 @@ public class SeleniumTestPart2 {
         WebElement remoteSignInList = driver.findElement(By.cssSelector("#main-content > div > div > article > div > ul"));
         List<WebElement> items = remoteSignInList.findElements(By.tagName("li"));
         Integer itemsSize = items.size();
-        Assert.assertEquals("There are less than 3 remote signIn options are available", checkedSize, itemsSize);
+        Assertions.assertEquals(checkedSize, itemsSize, "There are less than 3 remote signIn options are available");
     }
 
     @Test
@@ -140,7 +144,7 @@ public class SeleniumTestPart2 {
         assert checkedText.equals(headerText);
     }
 
-    @After
+    @AfterEach
     public void shutDown(){
         driver.quit();
         driver = null;

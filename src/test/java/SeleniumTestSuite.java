@@ -1,6 +1,9 @@
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+//import org.junit.After;
+//import org.junit.Before;
+//import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +16,7 @@ public class SeleniumTestSuite {
 
     private WebDriver driver;
 
-    @Before
+    @BeforeEach
     public void setup() {
         System.setProperty("webdriver.chrome.driver", "C:\\Selenium WebDriver\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver();
@@ -91,7 +94,7 @@ public class SeleniumTestSuite {
     }
 
 
-    @After
+    @AfterEach
     public void stop() {
         driver.quit();
         driver = null;

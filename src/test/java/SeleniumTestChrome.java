@@ -1,6 +1,8 @@
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+//import org.junit.After;
+//import org.junit.Before;
+//import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -9,14 +11,14 @@ public class SeleniumTestChrome {
     private WebDriver driver;
 
     // initialize driver
-    @Before
+    @BeforeEach
     public void setup() {
         System.setProperty("webdriver.chrome.driver", "C:\\Selenium WebDriver\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver();
     }
 
     // navigate to a page
-    @Test
+
     public void Test() {
         driver.get("https://www.google.com");
         // similar method
@@ -24,7 +26,7 @@ public class SeleniumTestChrome {
     }
 
     // stop driver and shut down browser
-    @After
+    @AfterEach
     public void stop() {
         driver.quit();
         driver = null;
