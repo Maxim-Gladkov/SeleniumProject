@@ -5,7 +5,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class SeleniumTestFirefox {
 
@@ -14,13 +16,17 @@ public class SeleniumTestFirefox {
     // initialize driver
     @BeforeEach
     public void setup() {
-        System.setProperty("webdriver.gecko.driver", "C:\\Selenium WebDriver\\geckodriver-v0.30.0-win64\\geckodriver.exe");
-        driver = new FirefoxDriver();
+        System.setProperty("webdriver.gecko.driver", "C:\\Selenium_WebDrivers\\geckodriver-v0.33.0-win64\\geckodriver.exe");
+        FirefoxOptions options = new FirefoxOptions();
+//        options.addArguments("--remote-allow-origins=*");
+        options.setBrowserVersion("124.0.1");
+
+        driver = new FirefoxDriver(options);
     }
 
     // navigate to a page
     @Test
-    public void myTest() {
+    public void firefoxBrowserTest() {
         driver.get("https://www.google.com");
         /*similar method
          * driver.navigate().to("https://www.google.com");

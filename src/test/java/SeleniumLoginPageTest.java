@@ -15,7 +15,7 @@ public class SeleniumLoginPageTest extends Base {
     @Description("positive login")
     public void positiveLogin() {
         ProductsPage productsPage = loginPage.fillOutLoginForm(TestData.user, TestData.password);
-        assert productsPage.getHeaderText().equals("PRODUCTS");
+        assert productsPage.getHeaderText().equals("Products");
     }
 
     @Test
@@ -67,7 +67,7 @@ public class SeleniumLoginPageTest extends Base {
         Assertions.assertEquals("", loginPage.loginField.getText());
         Assertions.assertEquals("", loginPage.passwordField.getText());
         ProductsPage productsPage = loginPage.positiveLogin();
-        assert productsPage.getHeaderText().equals("PRODUCTS");
+        assert productsPage.getHeaderText().equals("Products");
     }
 
     @Test

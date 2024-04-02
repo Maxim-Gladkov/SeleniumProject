@@ -3,8 +3,10 @@
 //import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class SeleniumTestChrome {
 
@@ -13,13 +15,16 @@ public class SeleniumTestChrome {
     // initialize driver
     @BeforeEach
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Selenium WebDriver\\chromedriver_win32\\chromedriver.exe");
-        driver = new ChromeDriver();
+        System.setProperty("webdriver.chrome.driver", "C:\\Selenium_WebDrivers\\new_chromedriver-win64\\chromedriver.exe");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+
+        driver = new ChromeDriver(options);
     }
 
     // navigate to a page
-
-    public void Test() {
+    @Test
+    public void chromeBrowserTest() {
         driver.get("https://www.google.com");
         // similar method
         // driver.navigate().to("https://www.youtube.com");
